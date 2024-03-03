@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
-import FirstPage from "./content/home";
-import SignIn from "./content/test";
+import Login from "./content/login";
+import Test from "./content/test";
 // import LogIn from "./content/LogIn";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
@@ -10,9 +10,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* 웹 서비스 소개 페이지 */}
-        <Route path="/" element={<FirstPage />} />
+        <Route path="/" element={<Login />} />
         {/* <SignIn /> */}
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );
