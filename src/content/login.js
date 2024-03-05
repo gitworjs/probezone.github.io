@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/LoginPage.css"; // 스타일 파일을 import
+import "../assets/css/LoginPage.css"; // 스타일 파일을 import
 
 function LoginPage() {
   const navigate = useNavigate();
