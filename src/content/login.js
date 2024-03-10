@@ -6,7 +6,8 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/test"); // 동일한 경로에 있는 test 페이지로 이동
+    // navigate("/test"); // 동일한 경로에 있는 test 페이지로 이동
+    navigate("/Author");
   };
 
   const [username, setUsername] = useState("");

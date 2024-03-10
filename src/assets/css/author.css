@@ -1,0 +1,27 @@
+body {
+  background-image: url("../../images/background.png");
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 화면 높이에 맞게 가운데 정렬 */
+}
+
+.content {
+  text-align: center;
+}
+
+p {
+  color: #ffffff;
+}
+
+.form-p {
+  margin-top: 30px;
+  margin-bottom: -1px;
+}
+
+.form-p1 {
+  font-size: 14px;
+}

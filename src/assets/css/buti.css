@@ -1,0 +1,30 @@
+body {
+  background-image: url("../../images/background.png");
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 화면 높이에 맞게 가운데 정렬 */
+}
+p {
+  color: #ffffff;
+}
+
+.button-container {
+  display: flex;
+}
+
+.scrollable-container {
+  overflow-y: scroll; /* 세로 스크롤을 추가합니다. */
+  height: 500px; /* 스크롤 가능한 높이를 지정하세요. */
+}
+
+.button-container button {
+  margin-right: 10px; /* 버튼 간격 조정 */
+}
+
+button span {
+  color: #ffffff; /* 버튼 내 숫자 색상을 빨간색으로 설정 */
+}
