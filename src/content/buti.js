@@ -1,14 +1,27 @@
 import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../assets/css/buti.css"; // 스타일 파일을 import
+import "../assets/css/noscript.css";
+import "../assets/css/main.css";
 
 function Buti() {
-  //   const [currentStart, setCurrentStart] = useState(0);
+  const location = useLocation();
+  const { username, password, textareaValue } = location.state;
+
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/Result", {
+      state: { testText, username, password, textareaValue },
+    });
+  };
+
   const [selectedValues, setSelectedValues] = useState([]);
 
   const [testText, setTestText] = useState([
     {
       label:
-        "1번. 나는 명확한 지침과 잘 훈련된 조직에서 최상의 능률을 발휘하며, 충성할 만한 사람이나 집단에 헌신한다. (6번)",
+        "1번. 나는 명확한 지침과 잘 훈련된 조직에서 최상의 능률을 발휘하며,충성할 만한 사람이나 집단에 헌신한다. (6번)",
       value: "",
     },
     {
@@ -140,16 +153,9 @@ function Buti() {
     },
   ]);
 
-  //   const handleValueChange = (value, index) => {
-  //     let newTestText = [...testText];
-  //     console.log(newTestText);
-  //     newTestText[currentStart + index].value = value;
-  //     setTestText(newTestText);
-  //   };
-
   const handleValueChange = (value, index) => {
     const newTestText = [...testText]; // testText 배열을 복사합니다.
-    console.log(newTestText);
+    // console.log(newTestText);
     newTestText[index].value = value; // 클릭된 인덱스의 value를 업데이트합니다.
     setTestText(newTestText); // 업데이트된 testText 배열을 상태로 설정합니다.
 
@@ -164,32 +170,28 @@ function Buti() {
     setSelectedValues(updatedSelectedValues); // 업데이트된 selectedValues 배열을 상태로 설정합니다.
   };
 
-  //   const handleValueChange = (value, index) => {
-  //     // 클릭된 항목의 인덱스를 계산합니다.
-  //     const selectedIndex = currentStart + index;
-  //     console.log(selectedValues);
-  //     // 선택된 값이 이미 있는지 확인합니다.
-  //     const isSelected = selectedValues.includes(selectedIndex);
-
-  //     // 선택된 값이 없으면 추가하고, 있으면 제거합니다.
-  //     const newSelectedValues = isSelected
-  //       ? selectedValues.filter((val) => val !== selectedIndex)
-  //       : [...selectedValues, selectedIndex];
-
-  //     // 선택된 값 배열을 업데이트합니다.
-  //     setSelectedValues(newSelectedValues);
-  //   };
+  const handleResultButtonClick = () => {
+    // 선택된 값이 모두 존재하는지 확인합니다.
+    const allValuesExist = testText.every((item) => item.value !== "");
+    if (allValuesExist) {
+      // 모든 값이 존재할 때 실행할 로직을 여기에 추가합니다.
+      handleButtonClick();
+    } else {
+      // 값이 하나라도 존재하지 않을 때 알림을 표시할 수 있습니다.
+      alert("Please answer all questions.");
+    }
+  };
 
   return (
     <div className="centered-content">
       <div className="content">
         <p>나의 마인드뷰티 컬러는?</p>
         <p>
-          1. 전혀그렇지 않다 2. 대체로 그렇지 않다 3.보통이다 4.대체로 그렇다
-          5.매우 그렇다
+          1. 전혀그렇지 않다 2. 대체로 그렇지 않다 3.보통이다 <br />
+          4.대체로 그렇다 5.매우 그렇다
         </p>
         <div className="scrollable-container">
-          <div className="">
+          <div>
             {testText.map((item, index) => (
               <div key={index}>
                 <p>{item.label}</p>
@@ -198,6 +200,7 @@ function Buti() {
                     <button
                       key={number}
                       style={{
+                        border: "1px solid #ffffff", // 테두리 두께와 색상을 지정합니다.
                         backgroundColor: item.value === number ? "gray" : "",
                       }}
                       onClick={() => handleValueChange(number, index)}
@@ -209,6 +212,19 @@ function Buti() {
                 <br />
               </div>
             ))}
+          </div>
+        </div>
+        <div className="result">
+          <div style={{ width: "100%" }}>
+            <button
+              onClick={handleResultButtonClick}
+              title="결과"
+              style={{
+                color: "#ffffff",
+              }}
+            >
+              <span>결과</span>
+            </button>
           </div>
         </div>
       </div>

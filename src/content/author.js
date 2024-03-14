@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/author.css"; // 스타일 파일을 import
+// import "../assets/css/noscript.css";
+import "../assets/css/main.css";
 
 function Author() {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/Buti");
+    navigate("/Buti", { state: { username, password, textareaValue } });
   };
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [textareaValue, setTextareaValue] = useState(""); // textarea 값의 state 추가
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // 여기에 로그인 처리 로직을 추가합니다.
-    console.log("Username:", username);
-    console.log("Password:", password);
 
     if (username !== "") {
       if (password !== "") {
@@ -37,7 +37,12 @@ function Author() {
           <br />
           중에 투자하고 있는 것은?
           <br />
-          <textarea type="text" />
+          <textarea
+            type="text"
+            className="white-input"
+            value={textareaValue}
+            onChange={(e) => setTextareaValue(e.target.value)}
+          />
         </p>
         <form onSubmit={handleSubmit}>
           <p className="form-p">테스터님의 이름을 알려주세요.</p>
@@ -45,10 +50,12 @@ function Author() {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className="white-input" // 새로운 클래스 추가
           />
           <p className="form-p">이야기를 나눌 수 있는 연락처를 입력해주세요.</p>
           <input
             type="text"
+            className="white-input" // 새로운 클래스 추가
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

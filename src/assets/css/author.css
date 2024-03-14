@@ -25,3 +25,9 @@ p {
 .form-p1 {
   font-size: 14px;
 }
+
+.white-input {
+  border-color: rgb(210, 214, 213);
+  color: rgb(210, 214, 213);
+  background-color: rgb(94, 86, 86);
+}
