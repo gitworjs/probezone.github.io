@@ -1,6 +1,6 @@
 import "./App.css";
 // import Login from "./content/login";
-// import Test from "./content/test";
+import Investment from "./content/investment";
 import Author from "./content/author";
 import Buti from "./content/buti";
 import Result from "./content/result";
@@ -14,8 +14,8 @@ function App() {
         {/* 웹 서비스 소개 페이지 */}
         <Route path="/" element={<Author />} />
         {/* <SignIn /> */}
-        {/* <Route path="/test" element={<Test />} />
-        <Route path="/Author" element={<Author />} /> */}
+        <Route path="/Investment" element={<Investment />} />
+        {/* <Route path="/Author" element={<Author />} /> */}
         <Route path="/Buti" element={<Buti />} />
         <Route path="/Result" element={<Result />} />
       </Routes>

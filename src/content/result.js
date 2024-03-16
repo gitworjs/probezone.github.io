@@ -112,8 +112,6 @@ function Result() {
         <p>
           이름: {username}
           <br />
-          전화번호: {password}
-          <br />
           투자: {textareaValue}
         </p>
       </div>

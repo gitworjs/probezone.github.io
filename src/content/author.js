@@ -8,56 +8,31 @@ function Author() {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/Buti", { state: { username, password, textareaValue } });
+    navigate("/Investment", { state: { username } });
   };
 
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [textareaValue, setTextareaValue] = useState(""); // textarea 값의 state 추가
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (username !== "") {
-      if (password !== "") {
-        handleButtonClick();
-      } else {
-        alert("이름과 전화번호를 입력해주세요");
-      }
+      handleButtonClick();
     } else {
-      alert("이름과 전화번호를 입력해주세요");
+      alert("이름을 입력해주세요");
     }
   };
 
   return (
     <div className="centered-content">
       <div className="content">
-        <p>
-          <span>아웃사이드 뷰티, 이너 뷰티, 마인드 뷰티</span>
-          <br />
-          중에 투자하고 있는 것은?
-          <br />
-          <textarea
-            type="text"
-            className="white-input"
-            value={textareaValue}
-            onChange={(e) => setTextareaValue(e.target.value)}
-          />
-        </p>
         <form onSubmit={handleSubmit}>
           <p className="form-p">테스터님의 이름을 알려주세요.</p>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="white-input" // 새로운 클래스 추가
-          />
-          <p className="form-p">이야기를 나눌 수 있는 연락처를 입력해주세요.</p>
-          <input
-            type="text"
-            className="white-input" // 새로운 클래스 추가
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            className="white-input"
           />
           <br />
           <button type="submit">
